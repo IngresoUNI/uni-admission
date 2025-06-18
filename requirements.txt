@@ -1,0 +1,7 @@
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.5
+xgboost>=2.0
+joblib>=1.4
+matplotlib>=3.9
+openpyxl>=3.1       # lectura de .xlsx
