@@ -13,18 +13,15 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             background: #f9f9f9;
         }
-
         h2 {
             text-align: center;
             margin-bottom: 25px;
         }
-
         label {
             display: block;
             margin-top: 15px;
             font-weight: bold;
         }
-
         input[type="number"],
         input[type="text"],
         select {
@@ -34,7 +31,6 @@
             border-radius: 8px;
             border: 1px solid #ccc;
         }
-
         input[type="submit"] {
             margin-top: 30px;
             padding: 12px 20px;
@@ -47,11 +43,9 @@
             border-radius: 8px;
             cursor: pointer;
         }
-
         input[type="submit"]:hover {
             background-color: #005fa3;
         }
-
         #resultado {
             margin-top: 25px;
             padding: 15px;
@@ -63,74 +57,79 @@
 </head>
 <body>
 
-    <h2>Predicción de Ingreso a la UNI</h2>
+<h2>Predicción de Ingreso a la UNI</h2>
 
-    <form id="formulario">
-        <label for="MODALIDAD">Modalidad:</label>
-        <select id="MODALIDAD" name="MODALIDAD" required>
-            <option value="Ordinario">Ordinario</option>
-            <option value="Centro Pre UNI">Centro Pre UNI</option>
-            <option value="Primeros Puestos">Primeros Puestos</option>
-            <option value="Extraordinario">Extraordinario</option>
-            <option value="Beca 18">Beca 18</option>
-            <option value="Traslado Interno">Traslado Interno</option>
-            <option value="Traslado Externo">Traslado Externo</option>
-            <option value="Personas con Discapacidad">Personas con Discapacidad</option>
-            <option value="Víctimas de Violencia">Víctimas de Violencia</option>
-        </select>
+<form id="formulario">
+    <label for="COLEGIO">Colegio:</label>
+    <input type="text" id="COLEGIO" name="COLEGIO" required>
 
-        <label for="COLEGIO_DEPA">Departamento del Colegio:</label>
-        <select id="COLEGIO_DEPA" name="COLEGIO_DEPA" required>
-            <option value="LIMA">LIMA</option>
-            <option value="PIURA">PIURA</option>
-            <option value="CUSCO">CUSCO</option>
-            <option value="AREQUIPA">AREQUIPA</option>
-            <option value="LA LIBERTAD">LA LIBERTAD</option>
-            <!-- Agrega más según tus datos -->
-        </select>
+    <label for="COLEGIO_DIST">Distrito del Colegio:</label>
+    <select id="COLEGIO_DIST" name="COLEGIO_DIST" required></select>
 
-        <label for="COLEGIO_ANIO_EGRESO">Año de Egreso del Colegio:</label>
-        <input type="number" id="COLEGIO_ANIO_EGRESO" name="COLEGIO_ANIO_EGRESO" min="1990" max="2025" required>
+    <label for="COLEGIO_PROV">Provincia del Colegio:</label>
+    <select id="COLEGIO_PROV" name="COLEGIO_PROV" required></select>
 
-        <label for="SEXO">Sexo:</label>
-        <select id="SEXO" name="SEXO" required>
-            <option value="M">Masculino</option>
-            <option value="F">Femenino</option>
-        </select>
+    <label for="COLEGIO_DEPA">Departamento del Colegio:</label>
+    <select id="COLEGIO_DEPA" name="COLEGIO_DEPA" required></select>
 
-        <label for="ANIO_NACIMIENTO">Año de Nacimiento:</label>
-        <input type="number" id="ANIO_NACIMIENTO" name="ANIO_NACIMIENTO" min="1980" max="2020" required>
+    <label for="ESPECIALIDAD">Especialidad:</label>
+    <select id="ESPECIALIDAD" name="ESPECIALIDAD" required></select>
 
-        <label for="COLEGIO_PAIS">País del Colegio:</label>
-        <input type="text" id="COLEGIO_PAIS" name="COLEGIO_PAIS" value="PERÚ" required>
+    <label for="MODALIDAD">Modalidad:</label>
+    <select id="MODALIDAD" name="MODALIDAD" required></select>
 
-        <label for="DOMICILIO_DEPA">Departamento de Domicilio:</label>
-        <select id="DOMICILIO_DEPA" name="DOMICILIO_DEPA" required>
-            <option value="LIMA">LIMA</option>
-            <option value="PIURA">PIURA</option>
-            <option value="CUSCO">CUSCO</option>
-            <option value="AREQUIPA">AREQUIPA</option>
-            <option value="LA LIBERTAD">LA LIBERTAD</option>
-        </select>
+    <label for="SEXO">Sexo:</label>
+    <select id="SEXO" name="SEXO" required></select>
 
-        <label for="NACIMIENTO_PAIS">País de Nacimiento:</label>
-        <input type="text" id="NACIMIENTO_PAIS" name="NACIMIENTO_PAIS" value="PERÚ" required>
+    <label for="COLEGIO_ANIO_EGRESO">Año de Egreso del Colegio:</label>
+    <input type="number" id="COLEGIO_ANIO_EGRESO" name="COLEGIO_ANIO_EGRESO" min="1990" max="2025" required>
 
-        <label for="NACIMIENTO_DEPA">Departamento de Nacimiento:</label>
-        <select id="NACIMIENTO_DEPA" name="NACIMIENTO_DEPA" required>
-            <option value="LIMA">LIMA</option>
-            <option value="PIURA">PIURA</option>
-            <option value="CUSCO">CUSCO</option>
-            <option value="AREQUIPA">AREQUIPA</option>
-            <option value="LA LIBERTAD">LA LIBERTAD</option>
-        </select>
+    <label for="ANIO_POSTULA">Año de Postulación:</label>
+    <input type="number" id="ANIO_POSTULA" name="ANIO_POSTULA" min="2020" max="2030" required>
 
-        <input type="submit" value="Predecir Ingreso">
-    </form>
+    <label for="ANIO_NACIMIENTO">Año de Nacimiento:</label>
+    <input type="number" id="ANIO_NACIMIENTO" name="ANIO_NACIMIENTO" min="1980" max="2020" required>
 
-    <div id="resultado"></div>
+    <label for="h_e_Matemática">Horas de estudio Matemáticas:</label>
+    <input type="number" step="0.1" id="h_e_Matemática" name="h_e_Matemática" required>
+
+    <label for="h_e_fisica_quimica">Horas de estudio Física-Química:</label>
+    <input type="number" step="0.1" id="h_e_fisica_quimica" name="h_e_fisica_quimica" required>
+
+    <label for="h_e_Aptitud">Horas de estudio Aptitud:</label>
+    <input type="number" step="0.1" id="h_e_Aptitud" name="h_e_Aptitud" required>
+
+    <label for="h_total_semana">Horas Totales Semanales:</label>
+    <input type="number" step="0.1" id="h_total_semana" name="h_total_semana" required>
+
+    <input type="submit" value="Predecir Ingreso">
+</form>
+
+<div id="resultado"></div>
 
 <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        const response = await fetch("/opciones");
+        const opciones = await response.json();
+
+        const cargarOpciones = (id, valores) => {
+            const select = document.getElementById(id);
+            valores.forEach(valor => {
+                const option = document.createElement('option');
+                option.value = valor;
+                option.textContent = valor;
+                select.appendChild(option);
+            });
+        };
+
+        cargarOpciones("COLEGIO_DIST", opciones["COLEGIO_DIST"]);
+        cargarOpciones("COLEGIO_PROV", opciones["COLEGIO_PROV"]);
+        cargarOpciones("COLEGIO_DEPA", opciones["COLEGIO_DEPA"]);
+        cargarOpciones("ESPECIALIDAD", opciones["ESPECIALIDAD"]);
+        cargarOpciones("MODALIDAD", opciones["MODALIDAD"]);
+        cargarOpciones("SEXO", opciones["SEXO"]);
+    });
+
     const form = document.getElementById('formulario');
     const resultadoDiv = document.getElementById('resultado');
 
@@ -147,14 +146,8 @@
 
         const result = await response.json();
 
-        // Cambiar color según predicción
-        if (result.prediccion == 1) {
-            resultadoDiv.style.backgroundColor = "#e0ffe0"; // verde claro
-            resultadoDiv.style.border = "1px solid #2ecc71";
-        } else {
-            resultadoDiv.style.backgroundColor = "#ffe0e0"; // rojo claro
-            resultadoDiv.style.border = "1px solid #e74c3c";
-        }
+        resultadoDiv.style.backgroundColor = result.prediccion == 1 ? "#e0ffe0" : "#ffe0e0";
+        resultadoDiv.style.border = result.prediccion == 1 ? "1px solid #2ecc71" : "1px solid #e74c3c";
 
         resultadoDiv.innerHTML = `
             <strong>Probabilidad de ingreso:</strong> ${result.probabilidad_ingreso}%<br>

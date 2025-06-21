@@ -1,10 +1,16 @@
 {
-  "MODALIDAD": "Ordinario",
-  "SEXO": "M",
-  "COLEGIO_ANIO_EGRESO": 2018,
-  "ANIO_NACIMIENTO": 1998,
+  "COLEGIO": "SACO OLIVEROS",
+  "COLEGIO_DIST": "LOS OLIVOS",
+  "COLEGIO_PROV": "LIMA",
   "COLEGIO_DEPA": "LIMA",
-  "DOMICILIO_DEPA": "LIMA",
-  "NACIMIENTO_PAIS": "PERÚ",
-  "NACIMIENTO_DEPA": "LIMA"
+  "COLEGIO_ANIO_EGRESO": 2018,
+  "ESPECIALIDAD": "INGENIERÍA CIVIL",
+  "ANIO_POSTULACION": 2023,
+  "ANIO_NACIMIENTO": 1998,
+  "SEXO": "M",
+  "MODALIDAD": "ORDINARIO",
+  "h_e_Matematicas": 25.0,
+  "h_e_Fisica_Quimica": 15.0,
+  "h_e_Aptitud": 7.0,
+  "h_total_semana": 47.0
 }

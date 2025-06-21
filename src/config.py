@@ -34,19 +34,24 @@ RANDOM_STATE: int = 42
 
 # Variables categóricas del dataset
 CATEGORICAL_COLS: List[str] = [
-    "MODALIDAD",            # tipo de admisión
-    "SEXO",                 # M o F
-    "COLEGIO_DEPA",         # departamento del colegio
-    "COLEGIO_PAIS",         # país del colegio
-    "DOMICILIO_DEPA",       # departamento de domicilio
-    "NACIMIENTO_PAIS",      # país de nacimiento
-    "NACIMIENTO_DEPA"       # departamento de nacimiento
+    "COLEGIO",
+    "COLEGIO_DIST",
+    "COLEGIO_PROV",
+    "COLEGIO_DEPA",
+    "ESPECIALIDAD",
+    "MODALIDAD",
+    "SEXO"
 ]
 
 # Variables numéricas del dataset
 NUMERIC_COLS: List[str] = [
-    "COLEGIO_ANIO_EGRESO",  # año de egreso del colegio
-    "ANIO_NACIMIENTO"       # año de nacimiento
+    "COLEGIO_ANIO_EGRESO",
+    "ANIO_POSTULA",           # <- corregido (antes: ANIO_POSTULACION)
+    "ANIO_NACIMIENTO",
+    "h_e_Matemática",         # <- corregido (antes: h_e_Matematicas)
+    "h_e_fisica_quimica",     # <- corregido (antes: h_e_Fisica_Quimica)
+    "h_e_Aptitud",
+    "h_total_semana"
 ]
 
 # Variable objetivo
