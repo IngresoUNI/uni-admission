@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
@@ -9,6 +10,15 @@ import numpy as np
 from src.config import MODEL_OUT, CATEGORICAL_COLS, NUMERIC_COLS, DATA_PATH
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Para producción, cambia esto a una lista específica de dominios permitidos
+    allow_credentials=True,
+    allow_methods=["*"],  # Permitir todos los métodos (GET, POST, etc.)
+    allow_headers=["*"],  # Permitir todos los encabezados
+)
+
 templates = Jinja2Templates(directory="templates")
 
 preprocessor, model = joblib.load(MODEL_OUT)
