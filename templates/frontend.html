@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Predicción de Ingreso UNI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            background: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            margin-top: 30px;
+            padding: 12px 20px;
+            width: 100%;
+            background-color: #007ACC;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005fa3;
+        }
+
+        #resultado {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #eef;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Predicción de Ingreso a la UNI</h2>
+
+    <form id="formulario">
+        <label for="MODALIDAD">Modalidad:</label>
+        <select id="MODALIDAD" name="MODALIDAD" required>
+            <option value="Ordinario">Ordinario</option>
+            <option value="Centro Pre UNI">Centro Pre UNI</option>
+            <option value="Primeros Puestos">Primeros Puestos</option>
+            <option value="Extraordinario">Extraordinario</option>
+            <option value="Beca 18">Beca 18</option>
+            <option value="Traslado Interno">Traslado Interno</option>
+            <option value="Traslado Externo">Traslado Externo</option>
+            <option value="Personas con Discapacidad">Personas con Discapacidad</option>
+            <option value="Víctimas de Violencia">Víctimas de Violencia</option>
+        </select>
+
+        <label for="COLEGIO_DEPA">Departamento del Colegio:</label>
+        <select id="COLEGIO_DEPA" name="COLEGIO_DEPA" required>
+            <option value="LIMA">LIMA</option>
+            <option value="PIURA">PIURA</option>
+            <option value="CUSCO">CUSCO</option>
+            <option value="AREQUIPA">AREQUIPA</option>
+            <option value="LA LIBERTAD">LA LIBERTAD</option>
+            <!-- Agrega más según tus datos -->
+        </select>
+
+        <label for="COLEGIO_ANIO_EGRESO">Año de Egreso del Colegio:</label>
+        <input type="number" id="COLEGIO_ANIO_EGRESO" name="COLEGIO_ANIO_EGRESO" min="1990" max="2025" required>
+
+        <label for="SEXO">Sexo:</label>
+        <select id="SEXO" name="SEXO" required>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+        </select>
+
+        <label for="ANIO_NACIMIENTO">Año de Nacimiento:</label>
+        <input type="number" id="ANIO_NACIMIENTO" name="ANIO_NACIMIENTO" min="1980" max="2020" required>
+
+        <label for="COLEGIO_PAIS">País del Colegio:</label>
+        <input type="text" id="COLEGIO_PAIS" name="COLEGIO_PAIS" value="PERÚ" required>
+
+        <label for="DOMICILIO_DEPA">Departamento de Domicilio:</label>
+        <select id="DOMICILIO_DEPA" name="DOMICILIO_DEPA" required>
+            <option value="LIMA">LIMA</option>
+            <option value="PIURA">PIURA</option>
+            <option value="CUSCO">CUSCO</option>
+            <option value="AREQUIPA">AREQUIPA</option>
+            <option value="LA LIBERTAD">LA LIBERTAD</option>
+        </select>
+
+        <label for="NACIMIENTO_PAIS">País de Nacimiento:</label>
+        <input type="text" id="NACIMIENTO_PAIS" name="NACIMIENTO_PAIS" value="PERÚ" required>
+
+        <label for="NACIMIENTO_DEPA">Departamento de Nacimiento:</label>
+        <select id="NACIMIENTO_DEPA" name="NACIMIENTO_DEPA" required>
+            <option value="LIMA">LIMA</option>
+            <option value="PIURA">PIURA</option>
+            <option value="CUSCO">CUSCO</option>
+            <option value="AREQUIPA">AREQUIPA</option>
+            <option value="LA LIBERTAD">LA LIBERTAD</option>
+        </select>
+
+        <input type="submit" value="Predecir Ingreso">
+    </form>
+
+    <div id="resultado"></div>
+
+<script>
+    const form = document.getElementById('formulario');
+    const resultadoDiv = document.getElementById('resultado');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        const response = await fetch("/predecir", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        // Cambiar color según predicción
+        if (result.prediccion == 1) {
+            resultadoDiv.style.backgroundColor = "#e0ffe0"; // verde claro
+            resultadoDiv.style.border = "1px solid #2ecc71";
+        } else {
+            resultadoDiv.style.backgroundColor = "#ffe0e0"; // rojo claro
+            resultadoDiv.style.border = "1px solid #e74c3c";
+        }
+
+        resultadoDiv.innerHTML = `
+            <strong>Probabilidad de ingreso:</strong> ${result.probabilidad_ingreso}%<br>
+            <strong>Predicción:</strong> ${result.prediccion == 1 ? "Sí ingresaría" : "No ingresaría"}<br>
+            <strong>Nivel de riesgo:</strong> ${result.riesgo}
+        `;
+    });
+</script>
+
+</body>
+</html>
